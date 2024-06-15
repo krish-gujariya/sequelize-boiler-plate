@@ -1,0 +1,56 @@
+swagger: "2.0"
+info:
+  title:  Boiler plate
+  version: 1.0.0
+
+schemes: [http]
+
+securityDefinitions:
+  BarearToken:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+    scheme: bearer
+    beareFormat: JWT
+
+
+security : 
+  - BarearToken : []
+
+
+
+paths:
+  /login: 
+    post:
+      tags:
+        - Users
+      summary: User Login...
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+      - name: email
+        in: formData
+        type: string
+        default: test@gmail.com
+        required: true
+      
+      - name: password
+        in: formData
+        type: string
+        default: test
+        required: true
+      
+      responses:
+        '201':
+          description: User login successfull...                
+        '403':
+          description: Login failed.....
+        '404':
+          description: Invalid credentials...
+        '505':
+          description: Something went wrong...
+        '409':
+          description: Access denied....
+      
